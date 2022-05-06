@@ -19,30 +19,50 @@ def start():
         else:
             print("Thats not a command. Try 'a' 'q' or 'z'")
 
+#Character selection function
 def character_select():
     print("You open your eyes and see three stones floating in front of you.")
     print("A red stone, blue stone, and a green stone.")
     print("What do you do?")
 
+    #Initial class choice
     choice = input('> ')
-
+    classChoice = ''
     if 'take' in choice and 'red' in choice:
         print("You pick up the stone and feel incredibly strong!")
         print("You start to feel the power grow in your arms!")
-        training('Warrior')
+        classChoice = 'Warrior'
     elif 'take' in choice and 'blue' in choice:
         print("You pick up the stone and feel a surge of knowledge!")
         print("You start to feel the power grow in you mind!")
-        training('Mage')
+        classChoice = 'Mage'
     elif 'take' in choice and 'green' in choice:
         print("You pick up the stone and feel a surge deftness")
         print("You start to feel the power grow in you hands and eyes!")
-        training('Hunter')
+        classChoice = 'Hunter'
     elif choice == 'q':
         exit(0)
     else:
         print("Try taking a stone instead")
+    #Space buffer for text
+    num = 5
+    i = 0
+    while i < num:
+        print('*')
+        i += 1
 
+    #Option to follow and start training() or ....
+    print("After taking the stone a hooded figure comes to you.")
+    print("'The time has come...' he says, and starts to walk away.'")
+    choice2 = input('> ')
+
+    if 'follow' in choice2:
+        training(classChoice)
+    else:
+        print("We knew you wouldnt be a hero...")
+        exit(0)
+
+#Training function and intro to abilities list
 def training(userClass):
     abilities = []
     print(f"Welcome, {userClass}. Here we will hone our skills.")
