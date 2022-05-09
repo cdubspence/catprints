@@ -139,11 +139,21 @@ def dungeonPrep(userClass, classAbilities):
     elif d_choice == 'leave':
             dungeonStart()
     else:
-        print('Cmon {userClass}, hurry up!')
+        print(f'Cmon {userClass}, hurry up!')
         d_choice = input('> ')
 
 #Start monster encounters
 def dungeonStart(userClass, classAbilities, inventory)
-
+    userClass = userClass
+    classAbilities = classAbilities
+    inventory = inventory
+    print(f"Keep your wits about you {userClass}")
+    print('There is a torch on the wall and two dark tunnels. One left'
+            'and one to the right.')
+    choice1 = input('> ')
+    if 'take' in choice1 and 'torch' in choice1:
+        inventory.append('torch')
+    elif 'move' in choice1 and 'left' in choice1:
+        
 
 start()
