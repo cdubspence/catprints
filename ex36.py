@@ -125,35 +125,55 @@ def dungeonPrep(userClass, classAbilities):
             print('You put the potion in your bag.')
             inventory.append('potion')
             print('-' * 10)
-            dungeonStart()
+            dungeonStart(userClass, abilities, inventory)
         elif 'take' in d_choice1 and 'bread' in d_choice1:
             print('You put the bread in your bag.')
             inventory.append('bread')
             print('-' * 10)
-            dungeonStart()
+            dungeonStart(userClass, abilities, inventory)
         elif 'take' in d_choice1 and 'amulet' in d_choice1:
             print('You put the amulet in your bag.')
             inventory.append('amulet')
             print('-' * 10)
-            dungeonStart()
+            dungeonStart(userClass, abilities, inventory)
     elif d_choice == 'leave':
-            dungeonStart()
+            dungeonStart(userClass, abilities, inventory)
     else:
         print(f'Cmon {userClass}, hurry up!')
         d_choice = input('> ')
 
 #Start monster encounters
-def dungeonStart(userClass, classAbilities, inventory)
+def dungeonStart(userClass, classAbilities, inventory):
     userClass = userClass
     classAbilities = classAbilities
     inventory = inventory
     print(f"Keep your wits about you {userClass}")
     print('There is a torch on the wall and two dark tunnels. One left'
-            'and one to the right.')
-    choice1 = input('> ')
-    if 'take' in choice1 and 'torch' in choice1:
-        inventory.append('torch')
-    elif 'move' in choice1 and 'left' in choice1:
-        
+            ' and one to the right.')
+    choice1 = ''
+    while choice1 != 'move left' and choice1 != 'move right':
+        choice1 = input('> ')
+        if 'take' in choice1 and 'torch' in choice1:
+            inventory.append('torch')
+            print('Now what?')
+            choice1 = input('> ')
+        elif 'move' in choice1 and 'left' in choice1:
+            print('Its so dark...')
+            dungeonPartA(userClass, classAbilities, inventory)
+        elif 'move' in choice1 and 'right' in choice1:
+            print('WHOA! There is a huge spider here!')
+            dungeonPartB(userClass, classAbilities, inventory)
+        else:
+            print("That doesnt seem like a good idea")
+            choice1 = input('> ')
 
+#Has to guess a code. to go to part b
+def dungeonPartA(userClass, classAbilities, inventory):
+    action = input('What do you do? > ')
+#Has to defeat spider to go to A
+def dungeonPartB(userClass, classAbilities, inventory):
+    action = input('What do you do? > ')
+#both a and b compelte and fight final boss and get and game
+def dungeonEnd(userClass, classAbilities, inventory):
+    action = input('What do you do? > ')
 start()
