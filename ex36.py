@@ -151,14 +151,14 @@ def dungeonStart(userClass, classAbilities, inventory):
     print(f"Keep your wits about you {userClass}")
     print('There is a torch on the wall and two dark tunnels. One left'
             ' and one to the right.')
-            
+
     choice1 = ''
-    while choice1 != 'move left' and choice1 != 'move right':
+    while choice1 != 'move left' or choice1 != 'move right':
         choice1 = input('> ')
         if 'take' in choice1 and 'torch' in choice1:
             inventory.append('torch')
             print('Now what?')
-            choice1 = input('> ')
+            #choice1 = input('> ')
         elif 'move' in choice1 and 'left' in choice1:
             print('Its so dark...')
             dungeonPartA(userClass, classAbilities, inventory)
@@ -178,8 +178,15 @@ def dungeonPartA(userClass, classAbilities, inventory):
 
     print(f'{userClass} can you hear that? The whispers...')
     print(f'....you have come far {userClass}...but your time runs out...')
+    print(f'{userClass}, we could check inventory, continue, or go back.')
+    action = input('What do you do? >')
 
-    action = input('What do you do?')
+    if action == 'go back':
+        dungeonStart(userClass, classAbilities, inventory)
+    elif 'check' in action or 'inventory' in action:
+        print(f"I see {inventory}")
+        action2 = input('Use something? > ')
+
     print('...answer this or perish...What runs, and never tires? ')
 
     guess1 = input('> ')
@@ -190,7 +197,8 @@ def dungeonPartA(userClass, classAbilities, inventory):
             exit(0)
         else:
             print(f'Not quite...{guesses} guesses left...')
-
+        guess1 = input('> ')
+    print(f"You are wiser than you look {userClass}.")
     dungeonPartB(userClass, classAbilities, inventory)
 
 #Has to defeat spider to go to A
