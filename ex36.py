@@ -147,9 +147,11 @@ def dungeonStart(userClass, classAbilities, inventory):
     userClass = userClass
     classAbilities = classAbilities
     inventory = inventory
+
     print(f"Keep your wits about you {userClass}")
     print('There is a torch on the wall and two dark tunnels. One left'
             ' and one to the right.')
+            
     choice1 = ''
     while choice1 != 'move left' and choice1 != 'move right':
         choice1 = input('> ')
@@ -169,11 +171,38 @@ def dungeonStart(userClass, classAbilities, inventory):
 
 #Has to guess a code. to go to part b
 def dungeonPartA(userClass, classAbilities, inventory):
-    action = input('What do you do? > ')
+    userClass = userClass
+    classAbilities = classAbilities
+    inventory = inventory
+    guesses = 3
+
+    print(f'{userClass} can you hear that? The whispers...')
+    print(f'....you have come far {userClass}...but your time runs out...')
+
+    action = input('What do you do?')
+    print('...answer this or perish...What runs, and never tires? ')
+
+    guess1 = input('> ')
+    while guess1 != 'water':
+        guesses -= 1
+        if guesses == 0:
+            print('Darkness takes you...mine forever..')
+            exit(0)
+        else:
+            print(f'Not quite...{guesses} guesses left...')
+
+    dungeonPartB(userClass, classAbilities, inventory)
+
 #Has to defeat spider to go to A
 def dungeonPartB(userClass, classAbilities, inventory):
+    userClass = userClass
+    classAbilities = classAbilities
+    inventory = inventory
     action = input('What do you do? > ')
 #both a and b compelte and fight final boss and get and game
 def dungeonEnd(userClass, classAbilities, inventory):
+    userClass = userClass
+    classAbilities = classAbilities
+    inventory = inventory
     action = input('What do you do? > ')
 start()
