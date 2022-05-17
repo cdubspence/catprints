@@ -3,6 +3,9 @@ from random import randint
 from textwrap import dedent
 
 class Scene(object):
+    #All other Scene objects have an enter() function that ovverride this
+    #one. This one will print if a class that is-a Scene() does not have an
+    #enter() funtion
     def enter(self):
         print('This scene is not yet configured.')
         print('Subclass it and implent enter()')
