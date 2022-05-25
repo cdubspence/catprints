@@ -1,7 +1,7 @@
 from sys import exit
 from random import randint
 from textwrap import dedent
-
+import lexicon
 #Basics classes to start game and make scenes
 class Scene(object):
 
@@ -41,7 +41,10 @@ class WagonRide(Scene):
                     - fight the guards
                     - nothing
                     """))
+        #get and scan input in lexicon.py
         action1 = input('> ')
+        lexicon.scan(action1)
+
         if action1 != 'nothing':
             print(dedent("""
                         You start to struggle and at first sign the guards throw
